@@ -37,7 +37,7 @@
                 success: function (data) {
                     if (data.code === 1) {
                     } else {
-                        alert("无法访问当前页面，原因为" + data.data);
+                        alert("无法访问当前页面，原因为" + data.msg);
                         window.location.href = "login.html";
                     }
                 },
