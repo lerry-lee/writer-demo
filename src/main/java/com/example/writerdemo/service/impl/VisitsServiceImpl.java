@@ -17,15 +17,26 @@ public class VisitsServiceImpl implements VisitsService {
     private VisitsMapper visitsMapper;
 
     @Override
-    public boolean add(String username, String vdate) {
+    public Boolean add(String username, String vdate) {
         String sign = username + vdate;
         Visits visits = Visits.builder().sign(sign).build();
-        visitsMapper.insert(visits);
-        return visits.getId() != null;
+        try {
+            visitsMapper.insert(visits);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public int getCount() {
-        return visitsMapper.count();
+    public Integer getCount() {
+        try {
+            int count = visitsMapper.count();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

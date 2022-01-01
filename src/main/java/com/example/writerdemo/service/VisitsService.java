@@ -5,6 +5,9 @@ package com.example.writerdemo.service;
  * @CreateDate: 2021/12/30
  */
 public interface VisitsService {
-    boolean add(String username,String vdate);
-    int getCount();
+    //添加一条访问记录
+    Boolean add(String username, String vdate);
+
+    //获取访问量总数
+    Integer getCount();
 }

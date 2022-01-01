@@ -36,8 +36,14 @@ public class UserController {
      */
     @GetMapping(value = "/check_username")
     public WriterResponseType checkUsername(@RequestParam("username") String username) {
+        Boolean result = userService.queryByUsername(username);
+        //若查询失败，则返回异常
+        if (result == null) {
+            log.info(String.format("查询用户名%s时发生异常", username));
+            return WriterResponseType.success("查询异常，请检查后台", null);
+        }
         //若用户名已存在
-        if (userService.queryByUsername(username)) {
+        else if (result) {
             log.info(String.format("用户名%s已存在，不可以使用", username));
             return WriterResponseType.success(String.format("用户名%s已存在，不可以使用", username), null);
         }

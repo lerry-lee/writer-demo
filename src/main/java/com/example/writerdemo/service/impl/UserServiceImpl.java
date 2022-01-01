@@ -19,22 +19,23 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public boolean queryByUsername(String username) {
-        return userMapper.selectByUsername(username) != null;
+    public Boolean queryByUsername(String username) {
+        try {
+            User user = userMapper.selectByUsername(username);
+            return user != null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
-    public boolean queryByUser(User user) {
+    public Boolean queryByUser(User user) {
         return userMapper.selectByUser(user) != null;
     }
 
     @Override
-    public String getPassword(String username) {
-        return null;
-    }
-
-    @Override
-    public boolean addUser(User user) {
+    public Boolean addUser(User user) {
         try {
             userMapper.insert(user);
         } catch (Exception e) {

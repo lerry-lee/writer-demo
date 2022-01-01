@@ -7,8 +7,12 @@ import com.example.writerdemo.entity.User;
  * @CreateDate: 2021/12/30
  */
 public interface UserService {
-    boolean queryByUsername(String username);
-    boolean queryByUser(User user);
-    String getPassword(String username);
-    boolean addUser(User user);
+    //查询用户名是否存在
+    Boolean queryByUsername(String username);
+
+    //查询用户是否存在
+    Boolean queryByUser(User user);
+
+    //添加新用户
+    Boolean addUser(User user);
 }

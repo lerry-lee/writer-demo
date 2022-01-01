@@ -2,8 +2,8 @@
 $(function () {
     $.ajax({
         type: 'get'
-        , contentType: "application/x-www-form-urlencoded"
         , url: host + '/visits/count'
+        , contentType: "application/x-www-form-urlencoded"
         , xhrFields: {
             withCredentials: true
         }
