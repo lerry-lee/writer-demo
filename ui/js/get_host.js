@@ -1,0 +1,1 @@
+const host = 'localhost:8888/writer-demo';

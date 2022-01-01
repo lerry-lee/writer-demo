@@ -1,0 +1,275 @@
+@font-face {
+    font-family: panel-;
+    src: url("font/mvboli.ttf")
+}
+
+@font-face {
+    font-family: jiashu;
+    src: url("font/hanyi.ttf");
+}
+
+
+.icon-alibaba {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.1em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+
+.div-footer {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+}
+
+.div-footer div {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.alert-dark {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+}
+
+.alert-secondary {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+}
+
+h5 {
+    font-size: 1.25rem;
+!important;
+}
+
+.link2me {
+    font-weight: bold;
+}
+
+.context, .challenge, .change, .metrics {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 1px;
+}
+
+.context:before {
+    content: "\F0C8";
+    color: #0000FF;
+}
+
+.challenge:before {
+    content: "\F111";
+    color: #C000C0;
+}
+
+.change:before {
+    content: "\F04B";
+    color: #008300;
+}
+
+.metrics:before {
+    content: "\F0E7";
+    color: orangered;
+}
+
+.table.table-bordered {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Arial;
+    font-size: 13px;
+    color: #333333;
+    border-width: 1px;
+    border-color: #dedede;
+    border-collapse: collapse;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    display: table;
+    border-spacing: 2px;
+}
+
+.table-bordered th {
+    font-size: 14px;
+    border-width: 2px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #dedede;
+    background-color: #dedede;
+}
+
+.table-bordered td {
+    border-width: 2px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #dedede;
+    background-color: #ffffff;
+}
+
+.span-tips {
+    font-family: Arial;
+    color: #333333;
+}
+
+
+.fa.fa.fa-thumbs-up.text-success,.fa.fa-2x.fa-check-circle-o.text-success {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url(icon/dianzan_1.png);
+    background-size: cover;
+}
+
+.fa.fa-exclamation-triangle.text-danger, .fa.fa-exclamation-circle {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url(icon/frown.png);
+    background-size: cover;
+}
+
+.badge.badge-pill.badge-analytic {
+    position: relative;
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 12px;
+    text-align: center;
+    background-color: darkorange;
+    color: #000000;
+    border-radius: 10px;
+    height: 18px;
+    line-height: 18px
+}
+
+.badge.badge-pill.badge-analytic-green {
+    position: relative;
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    background-color: darkgreen;
+    border-radius: 10px;
+    height: 18px;
+    line-height: 18px
+}
+
+.icon-offset {
+    margin-right: 2px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+.zhankai{
+    background-image: url("icon/zhankai.png");
+    background-size: cover;
+    margin-right: 2px;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+}
+
+.youxiang{
+    background-image: url("icon/youxiang1.png");
+    background-size: cover;
+}
+
+.home-header {
+    background-image: url(icon/shouye4.png);
+    background-size: cover;
+}
+
+.chart-header {
+    background-image: url(icon/tongjitu.png);
+    background-size: cover;
+}
+
+.analyse-header {
+    background-image: url(icon/analyse.png);
+    background-size: cover;
+}
+
+.develop-header {
+    background-image: url(icon/caidan.png);
+    background-size: cover;
+}
+
+.about-header {
+    background-image: url(icon/woniu.png);
+    background-size: cover;
+}
+
+.zfj-home {
+    background-image: url(icon/snail.png);
+    background-size: cover;
+}
+
+.edit-analyse {
+    background-image: url(icon/shuru.png);
+    background-size: cover;
+
+}
+
+.feedback-analyse {
+    background-image: url(icon/dingdan.png);
+    background-size: cover;
+}
+
+.tips-analyse {
+    background-image: url(icon/linggan.png);
+    background-size: cover;
+}
+
+.home-yumaobi {
+    background-image: url("icon/yumaobi.png");
+    background-size: cover;
+    color: rgba(255, 255, 255, .8);
+}
+
+.category-choosed{
+    color: #5fb878;
+}
+
