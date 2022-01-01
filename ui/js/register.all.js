@@ -21,10 +21,14 @@ layui.use('layer', function () {
         if (ulegal) {
             $.ajax({
                 type: 'get'
-                , url: 'register'
+                , contentType: "application/x-www-form-urlencoded"
+                , url: host + '/user/check_username'
                 , data: {'username': username}
+                , xhrFields: {
+                    withCredentials: true
+                }
                 , success: function (rst) {
-                    if (rst == 0)
+                    if (rst.code === 0)
                         $('#uValidation').css('opacity', '1');
                     else
                         $('#error-umsg').html('用户名已存在');

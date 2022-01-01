@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
  */
 @Mapper
 public interface VisitsMapper {
-    @Insert("INSERT INTO visits (sign) VALUES (#{sign})")
+    @Insert("INSERT IGNORE INTO visits (sign) VALUES (#{sign})")
     void insert(Visits visits);
 
     @Select("SELECT COUNT(id) FROM visits")

@@ -31,13 +31,16 @@ layui.use('layer', function () {
                 //登录成功或访问量+1
                 if (result.code === 1) {
                     layer.msg("登陆成功");
-                    window.localStorage["token"] = result.data;
+                    window.localStorage["user_token"] = result.data;
                     window.localStorage["username"] = username;
                     $.ajax({
                         type: 'GET'
                         , url: host + '/visits/add'
                         , data: {
                             'username': username,
+                        }
+                        , xhrFields: {
+                            withCredentials: true
                         }
                         , success:
                             function () {

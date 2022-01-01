@@ -33,4 +33,9 @@ public class VisitsController {
         return WriterResponseType.failed();
     }
 
+
+    @GetMapping(value = "/count")
+    public WriterResponseType count() {
+        return WriterResponseType.success("", visitsService.getCount());
+    }
 }

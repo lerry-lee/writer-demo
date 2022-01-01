@@ -34,7 +34,7 @@ public class UserController {
     /**
      * 检查用户名是否已存在
      */
-    @GetMapping(value = "/checkUsername")
+    @GetMapping(value = "/check_username")
     public WriterResponseType checkUsername(@RequestParam("username") String username) {
         //若用户名已存在
         if (userService.queryByUsername(username)) {
@@ -68,10 +68,14 @@ public class UserController {
     /**
      * 验证用户登陆状态
      */
-    public boolean validateLogin(String userToken) {
+    @GetMapping(value = "validate_login")
+    public WriterResponseType validateLogin(@RequestParam("user_token") String userToken) {
         //获取redis中用户模型
         UserModel userModel = (UserModel) redisUtil.get(userToken);
-        return userModel != null;
+        if (userModel == null) {
+            return WriterResponseType.failed("用户登陆已经过期", null);
+        }
+        return WriterResponseType.success();
     }
 
     /**
@@ -95,8 +99,8 @@ public class UserController {
             //返回token给前端
             return WriterResponseType.success("登陆成功", userToken);
         }
-        log.info("用户名或密码不正确，登陆失败");
-        return WriterResponseType.failed("用户名或密码不正确，登陆失败", null);
+        log.info(String.format("用户名%s或密码不正确，登陆失败", username));
+        return WriterResponseType.failed("用户名或密码不正确", null);
     }
 
     /**

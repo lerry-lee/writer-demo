@@ -1,0 +1,101 @@
+<ul class="layui-nav layui-nav-tree layui-nav-side"
+    style="padding: 20vh 0px;text-align: center;/*background-color: #202932;*/">
+    <li class="layui-nav-item" style="height: 85px;margin-bottom: 40px">
+        <a id="user" style="line-height: 50px;cursor:pointer"><i class="layui-icon" id="user-icon"
+                                                                 style="color: whitesmoke;font-size: 50px;">&#xe612;</i>
+        </a>
+        <a id="logout" style="cursor: pointer;text-align: center;display: none">登出</a>
+    </li>
+    <li class="layui-nav-item"><a href="home.html">首页</a></li>
+    <li class="layui-nav-item"><a href="analyse.html">写作</a></li>
+    <li class="layui-nav-item"><a href="chart.html">报表</a></li>
+    <li class="layui-nav-item"><a href="community.html">社区</a></li>
+    <li class="layui-nav-item"><a href="about.html">关于</a></li>
+    <li class="layui-nav-item"><a href="motto.html" style="margin-top: 40px">Motto</a></li>
+</ul>
+
+<script>
+    $(document).ready(function () {
+        layui.use(['layer'], function () {
+            const layer = layui.layer;
+
+            //前端登录验证
+            const user_token = window.localStorage["user_token"];
+            if (user_token == null) {
+                alert("用户还未登录，请先登录！");
+                window.location.href = "login.html";
+            }
+
+            //后端登录验证
+            $.ajax({
+                type: "GET",
+                contentType: "application/x-www-form-urlencoded",
+                url: host + "/user/validate_login?user_token=" + user_token,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    if (data.code === 1) {
+                    } else {
+                        alert("无法访问当前页面，原因为" + data.data);
+                        window.location.href = "login.html";
+                    }
+                },
+                error: function (data) {
+                    alert("请求失败，原因为" + data.responseText);
+                }
+            });
+
+            //获得当前用户名，在左侧导航栏显示
+            $('#user').append(window.localStorage["username"]);
+            $('#user').click(function () {
+                $('#logout').toggle();
+            });
+
+            //登出请求
+            $('#logout').click(function () {
+
+                const token = window.localStorage["user_token"];
+                if (token == null) {
+                    alert("用户还未登录，请先登录！");
+                    window.location.href = "login.html";
+                }
+
+                layer.msg('确定要退出登录吗？', {
+                    time: 0 //不自动关闭
+                    , shade: 0.8
+                    , offset: '200px'
+                    , btn: ['确定', '返回']
+                    , yes: function () {
+                        $.ajax({
+                            type: 'get'
+                            , contentType: "application/x-www-form-urlencoded"
+                            , url: host + '/user/logout'
+                            , data: {
+                                'user_token': user_token
+                            }
+                            , xhrFields: {
+                                withCredentials: true
+                            }
+                            , success: function (rst) {
+                                if (rst.code === 1) {
+                                    layer.msg('success');
+                                    window.localStorage.removeItem("user_token");
+                                    window.localStorage.removeItem("username");
+                                    window.location.href = 'login.html';
+                                } else {
+                                    layer.msg('failed');
+                                }
+                            }
+                            , error: function (data) {
+                                layer.alert("请求失败，原因为" + data.responseText);
+                            }
+                        });
+                    }
+                });
+
+            });
+
+        });
+    });
+</script>
