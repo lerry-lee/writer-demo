@@ -3,6 +3,7 @@ package com.example.writerdemo.mapper;
 import com.example.writerdemo.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -17,6 +18,7 @@ public interface UserMapper {
     @Select("SELECT * FROM user WHERE username = #{username} and password = #{password}")
     User selectByUser(User user);
 
-    @Insert("INSERT INTO user (username,email) VALUES (#{username},#{password})")
+    @Insert("INSERT INTO user (username,password) VALUES (#{username},#{password})")
+    @Options(useGeneratedKeys=true, keyProperty="id", keyColumn="id") //该注解用于返回主键
     void insert(User user);
 }

@@ -20,18 +20,32 @@ public class WriterResponseType {
     //返回数据内容
     private Object data;
 
-    public static WriterResponseType success(Object data) {
+    public static WriterResponseType success() {
         WriterResponseType responseType = new WriterResponseType();
         responseType.setCode(1);
-        responseType.setData("成功");
+        responseType.setMsg("成功");
+        return responseType;
+    }
+
+    public static WriterResponseType success(String msg, Object data) {
+        WriterResponseType responseType = new WriterResponseType();
+        responseType.setCode(1);
+        responseType.setMsg(msg);
         responseType.setData(data);
         return responseType;
     }
 
-    public static WriterResponseType failed(Object data) {
+    public static WriterResponseType failed() {
         WriterResponseType responseType = new WriterResponseType();
         responseType.setCode(0);
-        responseType.setData("失败");
+        responseType.setMsg("失败");
+        return responseType;
+    }
+
+    public static WriterResponseType failed(String msg, Object data) {
+        WriterResponseType responseType = new WriterResponseType();
+        responseType.setCode(0);
+        responseType.setMsg(msg);
         responseType.setData(data);
         return responseType;
     }

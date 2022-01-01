@@ -6,6 +6,8 @@ import com.example.writerdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 /**
  * @Author: lerry_li
  * @CreateDate: 2021/12/30
@@ -33,7 +35,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUser(User user) {
-        userMapper.insert(user);
-        return user.getId() != null;
+        try {
+            userMapper.insert(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

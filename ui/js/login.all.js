@@ -27,23 +27,30 @@ layui.use('layer', function () {
             , xhrFields: {
                 withCredentials: true
             }
-            , success:
-                function (result) {
-                    //登录成功或访问量+1
-                    if (result === 1) {
-                        $.ajax({
-                            type: 'post'
-                            , url: 'visits'
-                            , data: {}
-                            , success:
-                                function () {
-                                    window.location.href = 'home.jsp';
-                                }
-                        });
-                    } else {
-                        layer.msg('用户名或密码错误');
-                    }
+            , success: function (result) {
+                //登录成功或访问量+1
+                if (result.code === 1) {
+                    layer.msg("登陆成功");
+                    window.localStorage["token"] = result.data;
+                    window.localStorage["username"] = username;
+                    $.ajax({
+                        type: 'GET'
+                        , url: host + '/visits/add'
+                        , data: {
+                            'username': username,
+                        }
+                        , success:
+                            function () {
+                                window.location.href = 'home.html';
+                            }
+                    });
+                } else {
+                    layer.msg('登陆失败，原因为' + result.msg);
                 }
+            }
+            , error: function (data) {
+                alert("请求失败，原因为" + data.responseText);
+            }
         });
     });
 

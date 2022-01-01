@@ -1,5 +1,6 @@
 package com.example.writerdemo.controller;
 
+import com.example.writerdemo.response.WriterResponseType;
 import com.example.writerdemo.service.VisitsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,14 +23,14 @@ public class VisitsController {
     /**
      * 单个用户每天的访问只记一次
      */
-    @GetMapping(value = "/visits")
-    public int addVisits(@RequestParam("username") String username) {
+    @GetMapping(value = "/add")
+    public WriterResponseType add(@RequestParam("username") String username) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         String vdate = df.format(new Date());
         if (visitsService.add(username, vdate)) {
-            return 1;
+            return WriterResponseType.success();
         }
-        return 0;
+        return WriterResponseType.failed();
     }
 
 }
