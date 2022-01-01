@@ -1,1 +1,1 @@
-const host = 'localhost:8888/writer-demo';
+const host = 'http://localhost:8888/writer-demo';
