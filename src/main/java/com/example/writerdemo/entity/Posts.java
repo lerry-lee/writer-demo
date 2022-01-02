@@ -22,5 +22,6 @@ public class Posts implements Serializable {
     private String category;
     private String content;
     private String title;
-    private int totalComments;
+    private Integer dianzan;
+    private Integer totalComments;
 }
