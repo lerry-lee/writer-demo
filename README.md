@@ -1,7 +1,8 @@
 # 基于SpringBoot的写作分析系统
 
 [Gitee地址](https://gitee.com/lerry-lee/writer-demo)
-[Github地址]()
+
+[Github地址](https://github.com/lerry-lee/writer-demo)
 
 本项目的原型是[基于SSM的写作分析系统](https://gitee.com/lerry-lee/simple-writer)，对其进行技术栈升级。
 
