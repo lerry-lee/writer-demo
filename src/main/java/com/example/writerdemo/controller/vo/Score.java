@@ -1,28 +1,22 @@
-package com.example.writerdemo.entity;
+package com.example.writerdemo.controller.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 /**
  * @Author: lerry_li
- * @CreateDate: 2021/12/30
+ * @CreateDate: 2022/01/02
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Reflective implements Serializable {
+public class Score {
     private Integer id;
-    private String username;
-    private String title;
-    private String content;
     private Integer self;
     private Integer comparison;
     private Integer summary;
     private Integer automatic;
-    private String sdate;
 }

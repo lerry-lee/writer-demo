@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报表-Acawriter</title>
+    <link rel="stylesheet" type="text/css" href="plugins/layui/css/layui.min.css" media="all">
+    <script type="text/javascript" src="plugins/echarts/echarts.common.min.js"></script>
+    <script type="text/javascript" src="plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="plugins/layui/layui.min.js"></script>
+    <script type="text/javascript" src="js/get_host.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/chart.all.js"></script>
+</head>
+<body style="background-color: #F2F2F2">
+<!--导航栏-->
+<div class="header-page"></div>
+
+<div style="padding-left: 160px">
+    <div style="padding: 20px; background-color: #F2F2F2;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">DataTabel Panel</div>
+                    <div class="layui-card-body">
+                        <form class="layui-form layui-form-pane">
+                            <div class="layui-form-item">
+
+                                <label class="layui-form-label">保存时间</label>
+                                <div class="layui-input-block" style="width: 50%">
+                                    <input type="text" class="layui-input" placeholder="选择保存时间的范围区间" id="date-time">
+                                </div>
+
+                            </div>
+                            <div class="layui-form-item">
+
+                                <label class="layui-form-label">保存标题</label>
+                                <div class="layui-input-block" style="width: 50%">
+                                    <input class="layui-input" id="title-input" placeholder="输入标题中的关键词">
+                                </div>
+
+                            </div>
+                        </form>
+                        <button id="title-search" class="layui-btn">Search</button>
+                        <table id="demo" lay-filter="test" class="layui-table" lay-data="{id:'demo'}"></table>
+                        <script type="text/html" id="barDemo">
+                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                        </script>
+                    </div>
+                </div>
+                <div class="layui-card">
+                    <div class="layui-card-header">PieChart Panel</div>
+                    <div class="layui-card-body">
+                        <div id="echarts" style="width: 100%;height:100px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部栏-->
+<div class="footer-page"></div>
+</body>
+</html>

@@ -33,7 +33,7 @@ public class ReportController {
             log.info(String.format("查询用户%s的报告内容时发生异常", username));
             return WriterResponseType.failed();
         }
-        log.info(String.format("查询用户%s的报告成功，内容为%s", username, content));
+        log.info(String.format("查询用户%s的报告成功，内容为\"%s\"", username, content));
         return WriterResponseType.success("", content);
     }
 

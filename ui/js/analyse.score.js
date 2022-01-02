@@ -60,6 +60,7 @@ layui.use(['rate', 'layer'], function () {
             layer.msg('请全部评分后再提交哦');
         } else {
             const data = {
+                'username': window.localStorage["username"],
                 'title': title,
                 'content': content,
                 'self': self,
@@ -69,14 +70,14 @@ layui.use(['rate', 'layer'], function () {
             };
             $.ajax({
                 type: 'post'
-                , url: host+'reflective/save'
+                , url: host + '/reflective/save'
                 , contentType: "application/x-www-form-urlencoded"
                 , xhrFields: {
                     withCredentials: true
                 }
                 , data: data
                 , success: function (rst) {
-                    if (rst.code === '1') {
+                    if (rst.code === 1) {
                         layer.msg('保存成功');
                     } else {
                         layer.msg('保存失败，' + rst.msg);
