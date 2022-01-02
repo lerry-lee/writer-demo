@@ -61,4 +61,15 @@ public class PostsServiceImpl implements PostsService {
             return null;
         }
     }
+
+    @Override
+    public Boolean updateCommentsByOne(Integer sid) {
+        try {
+            int row = postsMapper.updateCommentsByOne(sid);
+            return row > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

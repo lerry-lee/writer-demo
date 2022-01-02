@@ -20,4 +20,7 @@ public interface PostsService {
 
     //模糊查询
     List<Posts> fuzzyQuery(String keyWord, String category, String author);
+
+    //评论数+1
+    Boolean updateCommentsByOne(Integer sid);
 }
