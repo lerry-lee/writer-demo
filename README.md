@@ -23,6 +23,11 @@
 | Java | 编程语言 |
 | SpringBoot | Java应用框架 |
 | MyBatis | ORM框架 |
+| Layui | 前端UI框架 |
+
+# 系统架构
+
+
 
 # 启动步骤
 

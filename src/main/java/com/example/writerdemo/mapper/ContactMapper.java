@@ -1,5 +1,7 @@
 package com.example.writerdemo.mapper;
 
+import com.example.writerdemo.entity.Contact;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -8,5 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ContactMapper {
-    int insert();
+    @Insert("INSERT into contact (username,name,email,comments) " +
+            "values (#{username},#{name},#{email},#{comments})")
+    void insert(Contact contact);
 }
