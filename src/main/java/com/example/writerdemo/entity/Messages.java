@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class Messages {
     private Integer id;
     private int sid;
+    private String username;
     private String message;
     private String comment;
     private int isRead;

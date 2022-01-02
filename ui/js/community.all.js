@@ -20,17 +20,23 @@ layui.use(['layer', 'util', 'laypage', 'element'], function () {
             }
         }
     });
-    //获得未读消息数量 todo
+    //获得未读消息数量
     $.ajax({
         type: 'get'
-        , url: 'messages/count'
-        , data: {}
+        , url: host + '/messages/count_not_read'
+        , data: {
+            "username":window.localStorage["username"]
+        }
         , contentType: "application/x-www-form-urlencoded"
         , xhrFields: {
             withCredentials: true
         }
         , success: function (rst) {
-            $('#totalMessages').html(rst);
+            if (rst.code === 1) {
+                $('#totalMessages').html(rst.data);
+            } else {
+                layer.alert(rst.msg);
+            }
         }
     });
     //查询所有帖子

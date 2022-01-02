@@ -39,7 +39,7 @@ public class CommentsController {
                                    @RequestParam("sid") Integer sid,
                                    @RequestParam("comment") String comment,
                                    @RequestParam("niming") Integer niming) {
-        commentator = niming == 1 ? "匿名名户" : commentator;
+        commentator = niming == 1 ? "匿名用户" : commentator;
         SimpleDateFormat df = new SimpleDateFormat("d MMM yyyy");//设置日期格式
         Comments comments = Comments.builder()
                 .comment(comment)

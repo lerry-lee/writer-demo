@@ -36,13 +36,13 @@ layui.use(['layer', 'form'], function () {
     })
     ;
     //匿名选择
-    var niming = 0;
+    let niming = 0;
     form.on('switch(niming)', function (data) {
         niming = (data.elem.checked == true ? 1 : 0); //开关是否开启，true或者false
     });
     //提交评论
     $('#save-comment').click(function () {
-        var comment = $('#comment').val();
+        const comment = $('#comment').val();
 
         if ($.trim(comment) === '') {
             layer.msg('评论内容不能为空');
@@ -71,17 +71,20 @@ layui.use(['layer', 'form'], function () {
             }
         });
         //向作者发送一条消息
-        const data_ = {
-            'sid': sid,
-            'title': title,
-            'author': author,
-            'comment': comment
-        };
         $.ajax({
             type: 'post'
-            , url: 'messages'
-            , contentType: 'application/json;charset=utf-8'
-            , data: JSON.stringify(data_)
+            , url: host + '/messages/save'
+            , contentType: "application/x-www-form-urlencoded"
+            , xhrFields: {
+                withCredentials: true
+            }
+            , data: {
+                'username': window.localStorage["username"],
+                'sid': sid,
+                'title': title,
+                'author': author,
+                'comment': comment
+            }
             , success: function () {
             }
         });
