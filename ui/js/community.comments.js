@@ -63,29 +63,34 @@ layui.use(['layer', 'form'], function () {
                 withCredentials: true
             }
             , success: function (rst) {
-                if (rst.code === '1') {
-                    layer.msg('评论成功');
+                if (rst.code === 1) {
+                    //向作者发送一条消息
+                    const name = niming === 1 ? '匿名用户' : window.localStorage["username"];
+                    $.ajax({
+                        type: 'post'
+                        , url: host + '/messages/save'
+                        , contentType: "application/x-www-form-urlencoded"
+                        , xhrFields: {
+                            withCredentials: true
+                        }
+                        , data: {
+                            'username': name,
+                            'sid': sid,
+                            'title': title,
+                            'author': author,
+                            'comment': comment
+                        }
+                        , success: function (rst) {
+                            if (rst.code === 1) {
+                                layer.msg('评论成功,并发送一条消息提醒了作者');
+                            } else {
+                                layer.alert('评论成功，但发送消息提醒失败，原因为：' + rst.msg);
+                            }
+                        }
+                    });
                 } else {
                     layer.alert(rst.msg);
                 }
-            }
-        });
-        //向作者发送一条消息
-        $.ajax({
-            type: 'post'
-            , url: host + '/messages/save'
-            , contentType: "application/x-www-form-urlencoded"
-            , xhrFields: {
-                withCredentials: true
-            }
-            , data: {
-                'username': window.localStorage["username"],
-                'sid': sid,
-                'title': title,
-                'author': author,
-                'comment': comment
-            }
-            , success: function () {
             }
         });
     });
