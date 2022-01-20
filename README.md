@@ -76,4 +76,3 @@ java -jar writerdemo.jar;
 
 - 写作分析API调用的UTS的API，可能已经不可用；
 
-- 报表页面的饼状图和折线图有bug，还未修复；
