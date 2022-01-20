@@ -58,7 +58,7 @@ public class ReportController {
     /**
      * 调用API分析文章 todo
      */
-    @PostMapping(value = "analyse", consumes = ContentType)
+    @PostMapping(value = "/analyse", consumes = ContentType)
     public WriterResponseType analyse(@RequestParam("content") String content,
                                       @RequestParam("type") int type) {
         return WriterResponseType.success("", "good job");

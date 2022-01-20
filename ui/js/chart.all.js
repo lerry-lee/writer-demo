@@ -88,16 +88,16 @@ layui.use(['table', 'laydate'], function () {
         , success: function (rst) {
             if (rst.code === 0) {
                 const data = rst.data;
-                console.log(data);
-                const data_source=[["id"],["self"],["comparison"],["summary"],["automatic"]];
-                for(var i in data){
-                    data_source[0].push(data[i]["id"]);
+                // console.log(data);
+                const data_source = [["id"], ["self"], ["comparison"], ["summary"], ["automatic"]];
+                for (const i in data) {
+                    data_source[0].push(data[i]["id"].toString());
                     data_source[1].push(data[i]["self"]);
                     data_source[2].push(data[i]["comparison"]);
                     data_source[3].push(data[i]["summary"]);
                     data_source[4].push(data[i]["automatic"]);
                 }
-                console.log(data_source);
+                // console.log(data_source);
                 const id_row1 = data_source[0][1];
                 if (id_row1 === undefined) {
                     layer.msg('还没有数据哦，快去写作和评分吧', {offset: '200px'});
@@ -119,13 +119,16 @@ layui.use(['table', 'laydate'], function () {
                         yAxis: {gridIndex: 0},
                         grid: {top: '55%'},
                         series: [
-                            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                            {type: 'line', smooth: true, seriesLayoutBy: 'row', emphasis: {focus: 'series'}},
+                            {type: 'line', smooth: true, seriesLayoutBy: 'row', emphasis: {focus: 'series'}},
+                            {type: 'line', smooth: true, seriesLayoutBy: 'row', emphasis: {focus: 'series'}},
+                            {type: 'line', smooth: true, seriesLayoutBy: 'row', emphasis: {focus: 'series'}},
                             {
                                 type: 'pie',
                                 roseType: 'angle',
+                                emphasis: {
+                                    focus: 'self'
+                                },
                                 itemStyle: {
                                     // 阴影的大小
                                     shadowBlur: 60,
@@ -140,12 +143,12 @@ layui.use(['table', 'laydate'], function () {
                                 radius: '40%',
                                 center: ['50%', '25%'],
                                 label: {
-                                    formatter: '{b}: {@' + id_row1 + '} ({d}%)'
+                                    formatter: '{b}: {@[' + data_source[0][0] + ']} ({d}%)'
                                 },
                                 encode: {
-                                    itemName: 'id',
-                                    value: id_row1,
-                                    tooltip: id_row1
+                                    itemName: data_source[0][0],
+                                    value: data_source[0][1],
+                                    tooltip: data_source[0][1]
                                 }
                             }
                         ]

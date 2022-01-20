@@ -81,7 +81,7 @@ layui.use(['layedit', 'util', 'layer', 'form'], function () {
         const content = layedit.getText(index);
 
         if (content === '') {
-            var test;
+            let test;
             if (data.value === 6) {
                 test = ("Technology is an enabler in providing greater access to justice through its ability to connect people with legal needs to legal assistance, information, and advice. With the increasing popularity of internet-enabled hand held devices and laptop computers, there is a tendency to assume that even the socio-economically vulnerable in our society have access to technology and the skills to use online services with confidence. This is not necessarily the case. \n" +
                     "\n" +
@@ -128,9 +128,9 @@ layui.use(['layedit', 'util', 'layer', 'form'], function () {
 
     //分析报告获得反馈
     $("#send").click(function () {
-            var txt = layedit.getText(index);
-            var feature = $('#genre option:selected').val();
-            var grammar = feature === 8 ? 'reflective' : 'analytical';
+            const txt = layedit.getText(index);
+            const feature = $('#genre option:selected').val();
+            const grammar = feature === 8 ? 'reflective' : 'analytical';
             if ($.trim(txt) === '') {
                 layer.msg('写作内容为空！');
                 return;
@@ -140,7 +140,7 @@ layui.use(['layedit', 'util', 'layer', 'form'], function () {
                 return;
             }
             //加载层图标
-            var loading = layer.load(0, {shade: false, offset: '50vh'});
+            const loading = layer.load(0, {shade: false, offset: '50vh'});
             //清空上次的反馈结果
             $('#feedback').empty();
             $('#analyticalReport8').css('display', 'none');
@@ -155,7 +155,7 @@ layui.use(['layedit', 'util', 'layer', 'form'], function () {
             $('#r-resources').css('display', 'none');
 
             //格式化参数data
-            var data = JSON.stringify({
+            const data = JSON.stringify({
                 'txt': txt,
                 'action': 'fetch',
                 'extra': {
@@ -169,7 +169,7 @@ layui.use(['layedit', 'util', 'layer', 'form'], function () {
             $.ajax({
                 type: 'post'
                 , contentType: "application/x-www-form-urlencoded"
-                , url: 'report'
+                , url: host + '/report/analyse'
                 , data: {
                     'content': data,
                     'type': feature

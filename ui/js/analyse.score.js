@@ -1,7 +1,7 @@
 layui.use(['rate', 'layer'], function () {
     const layer = layui.layer;
     const rate = layui.rate;
-    var self, comparison, summary, automatic;
+    let self, comparison, summary, automatic;
     //加载评分图标
     rate.render({
         elem: '#test0'
